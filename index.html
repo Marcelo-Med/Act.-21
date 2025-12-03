@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cifrado Hill – Marcelo Medina</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Cifrado Hill</h1>
+    <p>Alumno: <strong>Marcelo Medina</strong> | Grupo: <strong>1-B</strong> | Materia: <strong>Fundamentos de Álgebra / Programación</strong></p>
+  </header>
+
+  <main class="container">
+    <!-- PANEL: MÓDULO PRIMO + MATRIZ CLAVE -->
+    <section class="panel">
+      <h2>Módulo primo</h2>
+      <p>El Cifrado Hill trabajará aritmética módulo <em>p</em>, donde <em>p</em> debe ser un número primo.</p>
+
+      <input type="number" id="modulo" value="29">
+      <p class="hint">Ejemplos de primos: 29, 31, 37, 41, 43…</p>
+      <div id="prime-warning" class="info-box"></div>
+
+      <hr style="margin: 14px 0; border-color: rgba(148,163,184,0.4);">
+
+      <h2>Configuración de la clave (matriz 2×2)</h2>
+      <p>
+        La clave es una matriz 2×2 con valores enteros.  
+        Debe ser invertible módulo <strong>p</strong> (si el determinante no tiene inverso módulo p, no se podrá desencriptar).
+      </p>
+
+      <div class="matrix-grid">
+        <input type="number" id="a11" value="3">
+        <input type="number" id="a12" value="3">
+        <input type="number" id="a21" value="2">
+        <input type="number" id="a22" value="5">
+      </div>
+
+      <p class="hint">Ejemplo de clave válida (para varios primos): [[3, 3], [2, 5]].</p>
+      <div id="matrix-info" class="info-box"></div>
+    </section>
+
+    <!-- PANEL: MENSAJE, BOTONES, RESULTADO -->
+    <section class="panel">
+      <h2>Mensaje</h2>
+      <label for="texto">Texto (solo letras, se ignoran acentos y signos):</label>
+      <textarea id="texto" rows="4" placeholder="Escribe aquí tu mensaje..."></textarea>
+
+      <div class="buttons">
+        <button id="btn-encriptar">Encriptar</button>
+        <button id="btn-desencriptar">Desencriptar</button>
+      </div>
+
+      <h3>Resultado</h3>
+      <textarea id="resultado" rows="4" readonly></textarea>
+    </section>
+
+    <!-- PANEL: DETALLES DEL PROCESO -->
+    <section class="panel">
+      <h2>Detalles del Proceso</h2>
+      <div id="detalles" class="details-box"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Proyecto: Implementación del Cifrado Hill con encriptado y desencriptado usando módulo primo. Desplegado vía GitHub Pages.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
