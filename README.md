@@ -1,211 +1,128 @@
-Cifrado Hill – Marcelo Medina
+# Cifrado Hill – Marcelo Medina
 
-Nombre: Marcelo Medina
+## Información Personal
+- Nombre: Marcelo Medina
+- Grupo: 1-B
+- Materia: Fundamentos de Álgebra / Programación
+- Proyecto: Implementación del Cifrado Hill con Encriptado y Desencriptado
 
-Grupo: 1-B
+---
 
-Materia: Fundamentos de Álgebra / Programación
-
-Proyecto: Implementación del Cifrado Hill con Encriptado y Desencriptado
-
-Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto implementa el Cifrado Hill 2×2, un método de criptografía basado en álgebra lineal que utiliza matrices para cifrar y descifrar mensajes.
+Está desarrollado con HTML, CSS y JavaScript y se ejecuta directamente desde el navegador.
 
-El sistema permite al usuario:
+Permite:
+- Ingresar una matriz clave.
+- Encriptar texto.
+- Desencriptar mensajes.
+- Mostrar determinante e inverso de la matriz.
+- Validar automáticamente si la clave es correcta.
 
-Ingresar una matriz clave 2×2.
+---
 
-Encriptar mensajes usando multiplicación de matrices.
+## Cómo usar el programa
 
-Desencriptar los mensajes usando la matriz inversa.
+1. Abrir el archivo index.html.
+2. Escribir una matriz clave 2×2.
+3. Escribir un mensaje (solo letras A-Z).
+4. Presionar el botón Encriptar.
+5. Presionar Desencriptar para recuperar el mensaje.
 
-Visualizar información matemática como determinante e inverso modular.
+---
 
-El proyecto está desarrollado con HTML, CSS y JavaScript, y se puede ejecutar directamente desde un navegador web.
+## Reglas del sistema
 
-¿Cómo usar el programa?
+- Se utilizan únicamente letras A–Z.
+- El sistema trabaja módulo 26.
+- Los textos se convierten automáticamente a mayúsculas.
+- Los símbolos y acentos son ignorados.
+- El sistema cifra el mensaje en bloques de 2 letras.
+- Si el número de letras es impar, se agrega una X.
 
-Abre el archivo index.html o entra a la versión desplegada en GitHub Pages.
+---
 
-Ingresa la matriz clave 2×2 (preferentemente con números primos).
+## Fundamento Matemático
 
-Escribe un mensaje en el cuadro de texto.
+### Representación de las letras
 
-Presiona Encriptar para cifrar el mensaje.
-
-Presiona Desencriptar para recuperar el mensaje original.
-
-En la sección Detalles del Proceso puedes ver información matemática adicional.
-
-Reglas del Sistema
-
-Solo se usan letras del alfabeto inglés (A–Z).
-
-Todos los acentos, espacios y signos se eliminan automáticamente.
-
-El sistema trabaja con bloques de tamaño 2 (por la matriz 2×2).
-
-Si el mensaje tiene una cantidad impar de letras, se agrega una X al final como relleno (padding).
-
-El cálculo se realiza usando aritmética modular módulo 26.
-
-Fundamento Matemático
-Representación del texto
-
-Cada letra se convierte a número usando este esquema:
-
-Letra	Número
-A	0
-B	1
-C	2
-...	...
-Z	25
-
-El mensaje se agrupa en pares y se representa como vectores columna.
+A = 0, B = 1, C = 2, …, Z = 25
 
 Ejemplo:
 
 HOLA → [7, 14] y [11, 0]
 
-Encriptado
+---
 
-Se aplica la fórmula:
+### Encriptación
 
-𝐶
-=
-𝐾
-⋅
-𝑃
-(
-m
-o
-d
-26
-)
-C=K⋅P(mod26)
+C = K · P mod 26
 
 Donde:
+- K es la matriz clave.
+- P es el vector del mensaje.
+- C es el mensaje cifrado.
 
-𝐾
-K es la matriz clave.
+---
 
-𝑃
-P es el vector del mensaje.
+### Desencriptación
 
-𝐶
-C es el vector cifrado.
+P = K⁻¹ · C mod 26
 
-Desencriptado
+Para que exista inversa, el determinante debe cumplir:
 
-Primero se calcula la matriz inversa:
+gcd(det(K), 26) = 1
 
-𝐾
-−
-1
-=
-1
-det
-⁡
-(
-𝐾
-)
-⋅
-𝑎
-𝑑
-𝑗
-(
-𝐾
-)
-(
-m
-o
-d
-26
-)
-K
-−1
-=
-det(K)
-1
-	​
+---
 
-⋅adj(K)(mod26)
+## Uso de números primos
 
-Luego:
+Se recomienda usar números primos en la matriz clave para que el determinante sea coprimo con 26.
 
-𝑃
-=
-𝐾
-−
-1
-⋅
-𝐶
-(
-m
-o
-d
-26
-)
-P=K
-−1
-⋅C(mod26)
+Ejemplo de matriz:
 
-Si el determinante no tiene inverso módulo 26, la matriz no es válida.
+[ 3  3 ]
+[ 2  5 ]
 
-Uso de números primos
+---
 
-Se recomienda usar números primos en la matriz clave (como 2, 3, 5, 7, 11), ya que aumentan la probabilidad de que el determinante sea coprimo con 26, condición necesaria para que exista inversa modular.
+## Uso de la letra X
 
-Ejemplo de matriz válida con primos:
+Cuando un mensaje tiene número impar de letras, se agrega una X para completar el bloque.
+Al desencriptar, esta X puede aparecer, pero no forma parte del mensaje original.
 
-[ 3   3 ]
-[ 2   5 ]
+---
 
-Sobre la letra X al final
+## Tecnologías usadas
 
-Si el mensaje tiene número impar de letras, se agrega una X al final como relleno para completar el último bloque de 2 letras.
+- HTML5
+- CSS3
+- JavaScript
 
-Ejemplo:
+---
 
-MENSAJE → MENSAJEX
+## Estructura del proyecto
 
+index.html
+script.js
+style.css
+README.md
 
-Al desencriptar, esta X puede aparecer al final, aunque no forme parte del mensaje real.
+---
 
-Tecnologías usadas
+## Control de Versiones
 
-HTML5
+El proyecto contiene varios commits que muestran el progreso del trabajo:
+- creación de estructura
+- implementación del cifrado
+- corrección del desencriptado
+- mejoras visuales
+- documentación
 
-CSS3
+---
 
-JavaScript
-
-GitHub Pages
-
-Despliegue
-
-Este proyecto puede ejecutarse localmente o desde GitHub Pages.
-
-Ejemplo de enlace (reemplazar por el real):
-
-https://usuario.github.io/repositorio-cifrado-hill
-
-Control de versiones
-
-Este repositorio contiene varios commits que representan:
-
-Implementación del cifrado.
-
-Corrección del desencriptado.
-
-Mejoras visuales.
-
-Actualización de la documentación.
-
-Esto demuestra el desarrollo progresivo del proyecto.
-
-Autor
+## Autor
 
 Marcelo Medina
 Grupo 1-B
